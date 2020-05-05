@@ -47,8 +47,10 @@ Installing dependencies
 - Install dvblast
   Download this software from https://code.videolan.org/videolan/dvblast and install according to the 'INSTALL' file, which is part of the dvblast package.
   The file 'run_dvblast' expects the executable 'dvblast' to be present under ./dvblast-3.4'. 
+
 Modifying the software for TV in other countries
 ------------------------------------------------
+
 This section is not written yet, however, here are some tips:
 
    - Find the frequency of DVB-T used in your area. 

@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+import tkinter as tk, os, sys, utils
+
+u = utils.Utils()
+
+def launch_streamer():
+    pass
+
+def launch_screens():
+    for ch in list( u.channels.keys() ):
+        u.launch_channel(ch)
+    u.get_window_ids()
+
+def close_screens():
+    for ch in list( u.channels.keys() ):
+        u.close_channel(ch)
+
+def position_screens():
+    for channel in u.channels.keys():
+        u.position_screen(channel)
+
+
+window = tk.Tk()
+window.title("Idan+ Control Panel")
+window.geometry('530x60')
+
+btn = tk.Button(window, text="Launch Streamer", command=launch_streamer)
+btn.grid(column=0, row=0)
+
+btn = tk.Button(window, text="Launch Screens", command=launch_screens)
+btn.grid(column=1, row=0)
+
+btn = tk.Button(window, text="Position Screens", command=position_screens)
+btn.grid(column=2, row=0)
+
+btn = tk.Button(window, text="Close Screens", command=close_screens)
+btn.grid(column=3, row=0)
+
+def set_minimize_other_windows():
+    u.set_config_key("minimize_other_windows", minimize_other_windows.get())
+minimize_other_windows = tk.BooleanVar()
+chkBox = tk.Checkbutton(window, text='Minimize Other Wins', \
+                        variable=minimize_other_windows, command=set_minimize_other_windows)
+chkBox.grid(column=0, row=1)
+minimize_other_windows.set(u.config["minimize_other_windows"])
+
+def set_always_on_top():
+    if u.config["always_on_top"]:
+        window.call('wm', 'attributes', '.', '-topmost', '1')
+    else:
+        window.call('wm', 'attributes', '.', '-topmost', '0')
+    u.set_config_key("always_on_top", always_on_top.get())
+always_on_top = tk.BooleanVar()
+chkBox = tk.Checkbutton(window, text='Always on Top', \
+                        variable=always_on_top, command=set_always_on_top)
+chkBox.grid(column=1, row=1)
+always_on_top.set(u.config["always_on_top"])
+
+if u.config["always_on_top"]:
+    window.call('wm', 'attributes', '.', '-topmost', '1')
+window.mainloop()

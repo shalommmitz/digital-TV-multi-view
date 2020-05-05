@@ -1,0 +1,8 @@
+dvbv5-scan -O channel -o abc /usr/share/dvb/dvb-t/il-All
+w_scan -L -I abc >channels.xspf
+# sudo apt install dtv-scan-tables
+#w_scan -ft -c IL -L >vlc_ch_list
+#w_scan -F -t 3 -ft -c IL -L >vlc_ch_list.xspf_new
+#dvbv5-scan /usr/share/dvb/dvb-t/il-All
+#dvbv5-scan -T 10 /usr/share/dvb/dvb-t/il-All
+#scan /usr/share/dvb/dvb-t/il-All

@@ -1,0 +1,6 @@
+# To test the routing, the bellow cmd should report 'lo' at the end
+#   ip route get 239.255.0.1
+# Another test: tcpdump -i lo udp
+ifconfig lo multicast
+sudo route add -net 224.0.0.0 netmask 240.0.0.0 dev lo
+sudo ./dvblast-3.4/dvblast -C -c dvblast.conf -f 514000000 -b 8
